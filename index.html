@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alejandra Flores | Web Designer</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://kit.fontawesome.com/7eaf41582e.js"></script>
+  <!-- Libraries CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/logo1.png">
+    <!-- Vue.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+</head>
+<body>
+  <main id="app">
+  
+  <nav>
+    <ul class="menu" v-for="idiom in idiomSelected">
+        <!-- <li class="logo"><a href="#home"><img src="img/logo1.png" alt="Ale Flores" style="width: 150px;"></a></li> -->
+        <li class="logo"><a href="#home">Ale</a></li>
+        <li class="item"><a href="#home">{{ idiom.menu1 }}</a></li>
+        <li class="item"><a href="#about">{{ idiom.menu2 }}</a></li>
+        <li class="item"><a href="#skills">{{ idiom.menu3 }}</a></li>
+        <li class="item"><a href="#services">{{ idiom.menu4 }}</a></li>
+        <li class="item"><a href="#experience">{{ idiom.menu5 }}</a></li>
+        <li class="item"><a href="#work">{{ idiom.menu6 }}</a></li>
+
+
+        <li class="item fa fa-facebook"></li>
+        <li class="item fa fa-twitter"></li>
+        <li class="item fa fa-instagram"></li>
+
+        <li class="item"><select v-model="idiomSelected">
+    <option disabled value="">Cange idiom</option>
+    <option v-bind:value="spanish" selected>Spanish</option>
+    <option v-bind:value="english">English</option>
+  </select></li>
+            
+        <li class="toggle"><span class="bars"></span></li>
+    </ul>
+</nav>
+
+
+   <!--/ Intro Skew Star /-->
+   <div id="home" class="intro route bg-image" style="background-image: url(img/img_background1.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container" >
+          <div v-for="idiom in idiomSelected">
+
+            <p class="intro-subtitle">{{ idiom.header1}}</p>
+            <h1 class="intro-title mb-4">{{ idiom.header2 }}</h1>
+          </div>
+          <p class="intro-subtitle"><span class="text-slider-items">Web Developer,Web Designer,Frontend Designer,Backend Designer</span><strong class="text-slider"></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/ Intro Skew End /-->
+<div v-for="idiom in idiomSelected">
+  <div id="about">
+    <div class='page-wrapper'>
+      <div class='row_wrapper'>
+        <div class='column_wrapper'>
+            <!-- <div class="card"> -->
+              <div class="row_wrapper padding_profile">
+                <!-- <div class="column_wraper">
+                  <img src="img/img1.jpg" class="img_about_profile" alt="">
+                </div> -->
+                <div class="column_wraper ml-5">
+                  <h2>{{ idiom.menu2}}</h2>
+                  <p>{{ idiom.about1 }}</p>
+                  <p> {{ idiom.about2 }}</p>
+                  <p>{{ idiom.about3 }}</p>
+                  <p></p>
+                </div>
+              </div>
+            <!-- </div> -->
+        </div>
+        <div class='column_wrapper image_about'>
+        </div>
+      </div>
+
+     
+    </div>
+    
+  </div>
+  <!-- / about end / -->
+  
+  <!-- <span>Seleccionado: {{ idiomSelected }}</span> -->
+  
+  <div id="skills">
+    <div class="parallax">
+    <div class="skills"></div>
+    <div class="container" class="mt-4">
+      <h3 class="text-center text-white">{{ idiom.menu3 }}</h3>
+      <div class="row">
+
+          <div class="col-4" v-for="skil in skills">
+            <div class="skill">
+              <p>{{skil.name}}</p>
+              <div class="skill-bar skill1" v-bind:style="{width: skil.value}">
+                  <span class="skill-count">{{skil.value}}</span>
+              </div>
+            </div>
+          </div>
+
+          
+      
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- skills end -->
+
+  <div id="services">
+    <div class="container" class="mt-4">
+      <h3 class="text-center">{{ idiom.menu4 }}</h3>
+      <div class="row">
+        <div class="col-4">
+          <div class="box-part text-center">
+            <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
+            <div class="title mt-2">
+              <h4>{{ idiom.service1Name }}</h4>
+            </div>
+            <div class="text">
+              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
+              </span>
+            </div>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="box-part text-center">
+            <i class="fa fa-laptop fa-3x" aria-hidden="true"></i>
+            <div class="title mt-2">
+              <h4>{{ idiom.service2Name }}</h4>
+            </div>
+            <div class="text">
+              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
+              </span>
+            </div>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+        
+        <div class="col-4">
+          <div class="box-part text-center">
+            <i class="fa fa-code fa-3x" aria-hidden="true"></i>
+            <div class="title mt-2">
+              <h4>{{ idiom.service2Name }}</h4>
+            </div>
+            <div class="text">
+              <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
+              </span>
+            </div>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- services end -->
+
+  <div id="experience" class="mt-4">
+    <h3 class="text-center">{{ idiom.menu5 }}</h3>
+    <div class="timeline">
+  
+    
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience1 }}</h3>
+        <p>{{ idiom.dateExperience1 }}</p>
+      </div>
+  
+    
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience2 }}</h3>
+        <p>{{ idiom.dateExperience2 }}</p>
+      </div>
+  
+    
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience3 }}</h3>
+        <p>{{ idiom.dateExperience3 }}</p>
+      </div>
+  
+    
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience4 }}</h3>
+        <p>{{ idiom.dateExperience4 }}</p>
+      </div>
+  
+    
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience5 }}</h3>
+        <p>{{ idiom.dateExperience5 }}</p>
+      </div>
+  
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience6 }}</h3>
+        <p>{{ idiom.dateExperience6 }}</p>
+      </div>
+
+
+      <div class="timeline__item">
+        <h3 class="timeline__title">{{ idiom.experience7 }}</h3>
+        <p>{{ idiom.dateExperience7 }}</p>
+      </div>
+  
+    </div>
+  </div>
+  <!-- experience ends -->
+    
+  <div id="work" class="mt-4">
+    <div class="container">
+        <h3 class="text-center">{{ idiom.menu6 }}</h3>
+      <div class="row">
+
+       <div class="col-4" v-for="project in projects">
+        <div class="work-box">
+            <div class="work-img">
+              <img v-bind:src="project.imgs[0].img" alt="" class="img-fluid">
+            </div>
+            <div class="work-content">
+              <div class="row">
+                <div class="col-sm-9">
+                  <h2 class="w-title">{{project.name}}</h2>
+                  <div class="w-more">
+                    <span class="w-ctegory">{{project.position}}</span> / <span class="w-date">{{project.date}}</span>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <a class="w-like" v-bind:href="project.url">
+                    <span class="fa fa-plus"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+       </div>
+
+
+
+
+
+
+      </div>
+        
+        
+    </div>
+  </div>
+</div> <!-- v-for idiomSelected -->
+</main>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  <!-- Template Main Javascript File -->
+  <script src="js/typed.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

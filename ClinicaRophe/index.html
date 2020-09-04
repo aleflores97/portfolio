@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinica Rophe</title>
+    <!-- bulma -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+    <!-- vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <!-- styles -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" /> -->
+    <link rel="stylesheet" type="text/css" href="css/mainFront.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/slider.css" />
+    <link rel="stylesheet" type="text/css" href="css/mediasFront.css" /> -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/7eaf41582e.js"></script>
+    <!-- logo -->
+    <link rel="icon" type="image/png" href="images/logo.png" />
+  </head>
+  <body>
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+      <div class="preloader">
+        <!-- <img src="img/preloader.gif" alt="" /> -->
+      </div>
+    </div>
+    <!-- End Preloader-->
+    <!-- Begin Scroll Up Button -->
+    <a id="button"><i class="fas fa-angle-up"></i></a>
+    <!-- begin nav -->
+    <section>
+      <nav class="navbar is-fixed-top"  id="especialidades">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="index.html">
+            <img src="images/rophe2.png" alt="Clinica Rophe" width="112" height="28">
+          </a>  
+          <!-- Mobile nav button -->
+          <div class="navbar-burger burger" data-target="navMenubd-example">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div> 
+        <div id="navMenubd-example" class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item is-active" href="index.html">
+              <span class="fas fa-hospital"></span>
+              &nbsp;Inicio
+            </a>
+            <div class="navbar-item has-dropdown">
+              <a class="navbar-link">
+                <span class="fas fa-microscope" style="color: 000;"></span>
+                &nbsp;Especialidades
+              </a>
+              <div class="navbar-dropdown" id="espe">
+                <span v-for="especialidad in especialidades">
+                  <a class="navbar-item" @click="pasarVariables('med-esp-com.html', `${especialidad.id_especialidad}`)">
+                    <span>{{ especialidad.nombre_especialidad }}</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+            <a class="navbar-item " href="servicios.html">
+              <span class="fas fa-syringe"></span>
+              &nbsp;Servicios
+            </a>
+            <a class="navbar-item " href="farmacia.html">
+              <span class="fas fa-pills"></span>
+              &nbsp;Farmacia
+            </a>
+          </div><!-- navbar-start -->
+          <div class="navbar-end">
+            <a class="navbar-item is-hidden-desktop-only" href="https://www.facebook.com" target="_blank">
+              <span class="icon" style="color: #333;">
+                <i class="fab fa-facebook"></i>
+              </span>
+              <span>Facebook</span>
+            </a>
+            <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com" target="_blank">
+              <span class="icon" style="color: #55acee;">
+                <i class="fab fa-twitter"></i>
+              </span>
+              <span>Twitter</span>
+            </a>
+          </div><!-- nabvar-end -->
+        </div>
+      </nav>
+    </section>
+    <!-- end nav -->
+    <!-- Begin Header -->
+    <div class="header-wrapper" id="home">
+      <!-- Begin Hero -->
+      <section class="hero hero-image is-large">
+        <div id="wrap">
+          <ul class="imagenes">
+            <li v-for="(banner, index) in bannerList" :key="index" :class="{ on: index === currentIndex }">
+              <img :src="banner.media" :alt="banner.nombre_publicacion">
+              <div class="texto">
+                <p>{{ banner.nombre_publicacion }}</p>
+                <p>{{ banner.descripcion }}</p>
+              </div>
+            </li>
+          </ul>
+          <ul class="progress-indicator" :data-slides-count="'0' + bannerList.length">
+            <li v-for="(banner, index) in bannerList" :key="index" :class="index === currentIndex ? 'progress-indicator__bar progress-indicator__bar--active' : 'progress-indicator__bar'"></li>
+          </ul>
+        </div>
+        <!-- End Hero Content-->
+      </section>
+      <!-- End Hero -->
+    </div>
+    <!-- End Header -->
+    <!-- Begin Main Content -->
+    <div class="main-content">
+      <!-- Begin About Me Section -->
+      <div class="section-light about-me" id="about-me">
+        <div class="container">
+          <div class="column is-12 about-me">
+            <h1 class="title has-text-centered section-title">Sobre Nosotros</h1>
+          </div>
+          <div class="columns is-multiline">
+          <div class="column is-4 has-text-centered">
+            <div class="card service-item">
+              <div class="card-content">
+                <i class="fas fa-book-medical"></i><br><br>
+                <p class="title is-5">Misión</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad beatae ducimus, ipsa dolores nam repellendus rem sequi dolor sed neque illo magnam. Aliquam rem, voluptatum magni cumque nam excepturi iure.</p>
+              </div>
+            </div>
+          </div>
+          <div class="column is-4 has-text-centered">
+            <div class="card service-item">
+              <div class="card-content">
+                <i class="far fa-eye"></i><br><br>
+                <p class="title is-5">Visión</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore corrupti facilis velit consequatur sed eum quod, illo eveniet eius explicabo exercitationem placeat sint maxime porro voluptate! Distinctio odit voluptatibus.</p>
+              </div>
+            </div>
+          </div><div class="column is- has-text-centered4 has-text-centered">
+            <div class="card service-item">
+              <div class="card-content">
+                <i class="fas fa-heartbeat"></i><br><br>
+                <p class="title is-5">Valores</p>
+                <p>
+                  <ul>
+                    <li>Lorem ipsum</li>
+                    <li>dolor sit</li>
+                    <li>amet consectetur</li>
+                    <li>dipisicing elit</li>
+                    <li>Ad beatae ducimus</li>
+                  </ul>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Services Content -->
+    </div>
+
+
+    <!-- End About Me Content -->
+    <div class="section-dark">
+      <div class="container ">
+        <div class="columns is-multiline has-text-centered">
+          <div class="column is-12">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.4570254923615!2d-89.5621628439635!3d13.99089360025825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f62e9d034adc039%3A0x5d525f774127a748!2sClinica+De+Medicina+Integral+Rophe!5e0!3m2!1ses!2ssv!4v1563636222685!5m2!1ses!2ssv" frameborder="0"  allowfullscreen class="iframeMapa"></iframe>
+          </div>
+          <!-- <div class="column is-4">
+            <b>Horarios:</b>
+            <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+          </div>
+          <div class="column is-4">
+            <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+            <br>
+          </div>
+          <div class="column is-4">
+            <b>Teléfono:</b><p>(+503) 2468-0316</p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer is-hidden-mobile">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="columns is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="footer is-hidden-desktop">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+</div>
+<div class="regresar" style="position: fixed;z-index: 1000000;bottom: 0;background-color: #fffa;left: 0;">
+  <a href="../index.html">regresar</a>
+</div>
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <script src="js/mainFront.js"></script>
+    <script src="js/scriptsFront.js"></script>
+    <!-- <script src="js/jquery.flexlider-min.js"></script>
+    <link rel="stylesheet" src="css/full-slider.css"> -->
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
+    <script>
+      AOS.init({
+        easing: "ease-out",
+        duration: 800,
+      });    
+      let timer = null;
+      const auto_interval = 5000;
+      new Vue({
+        el: "#wrap",
+        data: {
+          bannerList: [
+            {
+              descripcion: 'descripcion',
+              nombre_publicacion: 'nombre',
+              media: 'images/servicios3.jpeg'
+            },
+            {
+              descripcion: 'descripcion2',
+              nombre_publicacion: 'nombre2',
+              media: 'images/farmacia2.jpeg'
+            }
+          ],
+          currentIndex: 0
+        },
+        methods: {
+          play(){
+            let vueSelf = this;
+            timer = setInterval(function() {
+              vueSelf.addIndex();
+            }, auto_interval);
+          },
+          addIndex(){
+            let newIndex = this.currentIndex + 1;
+            this.currentIndex = newIndex === this.bannerList.length ? 0 : newIndex;
+          }
+        },
+        mounted(){
+          // axios.get('http://192.168.0.14/Clinica_Rophe/api/publicacion/findByTP/1')
+          // .then(res => {
+          //   this.bannerList = res.data;
+          // })
+          // .catch(error => {
+          //   console.log(error);            
+          // });
+          this.play();
+        }
+      })
+    </script> 
+  </body>
+</html>

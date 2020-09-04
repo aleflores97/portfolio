@@ -1,0 +1,223 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinica Rophe</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+      integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/mainFront.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/mediasFront.css" /> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    
+    <script src="https://kit.fontawesome.com/7eaf41582e.js"></script>
+
+    <link rel="icon" type="image/png" href="images/logo.png" />
+  </head>
+
+  <body>
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+      <div class="preloader">
+        <!-- <img src="img/preloader.gif" alt="" /> -->
+      </div>
+    </div>
+    <!-- End Preloader-->
+    <!-- Begin Scroll Up Button -->
+    <a id="button"><i class="fas fa-angle-up"></i></a>
+    <!-- End Scroll Up Button -->
+    <div id="especialidades">
+      <!-- Begin Header -->
+      <section>
+        <nav class="navbar is-fixed-top" >
+          <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+              <img src="images/rophe2.png" alt="Clinica Rophe" width="112" height="28">
+            </a>  
+            <!-- Mobile nav button -->
+            <div class="navbar-burger burger" data-target="navMenubd-example">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>   
+          <div id="navMenubd-example" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item " href="index.html">
+                <span class="fas fa-hospital"></span>
+                &nbsp;Inicio
+              </a>
+              <div class="navbar-item has-dropdown">
+                <a class="navbar-link">
+                  <span class="fas fa-microscope" style="color: 000;"></span>
+                  &nbsp;Especialidades
+                </a>
+                <div class="navbar-dropdown" id="espe">
+                  <span v-for="especialidad in especialidades">
+                    <a class="navbar-item" @click="pasarVariables('med-esp-com.html', `${especialidad.id_especialidad}`)">
+                      <span>{{ especialidad.nombre_especialidad }}</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+                <a class="navbar-item " href="servicios.html">
+                  <span class="fas fa-syringe"></span>
+                  &nbsp;Servicios
+                </a> 
+                <a class="navbar-item is-active" href="farmacia.html">
+                  <span class="fas fa-pills"></span>
+                  &nbsp;Farmacia
+                </a>
+              </div><!-- navbar-start -->
+              <div class="navbar-end">
+                <a class="navbar-item is-hidden-desktop-only" href="https://www.facebook.com" target="_blank">
+                  <span class="icon" style="color: #333;">
+                    <i class="fab fa-facebook"></i>
+                  </span>
+                  <span>Facebook</span>
+                </a>
+                <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com" target="_blank">
+                  <span class="icon" style="color: #55acee;">
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                  <span>Twitter</span>
+                </a>
+              </div><!-- nabvar-end -->
+            </div>
+          <!-- </div> -->
+        </nav>
+      </section>
+      <!-- End Header -->
+      <section class="hero is-info is-fullheight" id="imagenFarmacia">
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <div class="column is-6 is-offset-3">
+              <h1 class="title">
+                FARMACIA
+              </h1>
+              <h2 class="subtitle">
+                Encuentra los medicamentos que necesites en nuestra farmacia
+              </h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Begin Main Content -->
+      <div class="main-content">
+        <!-- Begin Skills Content -->
+        <div class="section-light skills" id="skills">
+          <div class="container">
+            <div class="columns is-multiline">
+              <div class="column is-12">
+                <div class="field">
+                  <label class="label">Buscar por nombre</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="Ingrese el nombre del producto" id="buscador" v-model="search" >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container">
+              <div id="listado" class="columns is-multiline" v-if="filteredProducts.length">
+                <div class='column is-3' v-for="product in filteredProducts">
+                  <div class='card card-producto'>
+                    <div class='card-image'>
+                      <figure class='image is-4by3'>
+                        <img :src=`${product.foto}` :alt="product.nombre" @click='verProductos(product.id)'>
+                      </figure>
+                    </div>
+                    <div class='card-content'>
+                      <div class='media'>
+                        <div class='media-left'>
+                          <figure class='image image-producto'>
+                            <img src='images/logo.png' alt='ROPHE'>
+                          </figure>
+                          <p class='title is-4'>{{product.nombre}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" v-else>
+                <p>No se encontraron resultados</p>
+              </div>
+              <nav class="pagination is-centered" role="navigation" aria-label="pagination">              
+                <div id="botones" class="pagination-list" role="group" arial-label="grupo"></div>
+              </nav>
+            </div>
+          </div><!-- section light -->
+        </div>
+      </div>
+    </div> <!-- especialidades-->
+      
+    <footer class="footer is-hidden-mobile">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="columns is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="footer is-hidden-desktop">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+    <div class="regresar" style="position: fixed;z-index: 1000000;bottom: 0;background-color: #fffa;left: 0;">
+			<a href="../index.html">regresar</a>
+		</div>
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/mainFront.js"></script>
+    <!-- <script src="js/scriptsFront.js"></script> -->
+    <script src="js/farmacia.js"></script>
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        easing: "ease-out",
+        duration: 800,
+      });
+
+      // farmacia();
+    </script>
+  </body>
+</html>

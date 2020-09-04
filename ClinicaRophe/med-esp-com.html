@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clinica Rophe</title>
+    <!-- bulma -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" integrity="sha256-vK3UTo/8wHbaUn+dTQD0X6dzidqc5l7gczvH+Bnowwk=" crossorigin="anonymous" />
+    <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+    <!-- estilos -->
+    <link rel="stylesheet" type="text/css" href="css/mainFront.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/mediasFront.css" />
+    <link rel="stylesheet" type="text/css" href="css/comentarioFront.css" /> -->
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/7eaf41582e.js"></script>
+    <!-- logo -->
+    <link rel="icon" href="images/logo.png" />
+  </head>
+
+  <body>
+    <!-- Begin Preloader -->
+    <div class="preloader-wrapper">
+      <div class="preloader">
+        <!-- <img src="img/preloader.gif" alt="" /> -->
+      </div>
+    </div>
+    <!-- End Preloader-->
+
+    <!-- Begin Scroll Up Button -->
+    <a id="button"><i class="fas fa-angle-up"></i></a>
+    <!-- End Scroll Up Button -->
+    
+    <div id="especialidades">
+      <!-- Begin Header  -->
+      <section>
+        <nav class="navbar is-fixed-top" >
+          <div class="navbar-brand">
+            <a class="navbar-item" href="index.php">
+              <img src="images/rophe2.png" alt="Clinica Rophe" width="112" height="28">
+            </a>
+            <!-- Mobile nav button -->
+            <div class="navbar-burger burger" data-target="navMenubd-example">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div> 
+
+          <div id="navMenubd-example" class="navbar-menu">
+            <div class="navbar-start">
+              <a class="navbar-item " href="index.html">
+                <span class="fas fa-hospital"></span>
+                &nbsp;Inicio
+              </a>
+              <div class="navbar-item has-dropdown">
+                <a class="navbar-link">
+                  <span class="fas fa-microscope" style="color: 000;"></span>
+                  &nbsp;Especialidades
+                </a>
+                <div class="navbar-dropdown" id="espe">
+                  <span v-for="especialidad in especialidades">
+                    <a class="navbar-item" @click="pasarVariables('med-esp-com.html', `${especialidad.id_especialidad}`)">
+                      <span>{{ especialidad.nombre_especialidad }}</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+              <a class="navbar-item " href="servicios.html">
+                <span class="fas fa-syringe"></span>
+                &nbsp;Servicios
+              </a>   
+              <a class="navbar-item " href="farmacia.html">
+                <span class="fas fa-pills"></span>
+                &nbsp;Farmacia
+              </a>
+            </div><!-- navbar-start -->            
+            <div class="navbar-end">
+              <a class="navbar-item is-hidden-desktop-only" href="https://www.facebook.com" target="_blank">
+                <span class="icon" style="color: #333;">
+                  <i class="fab fa-facebook"></i>
+                </span>
+                <span>Facebook</span>
+              </a>
+              <a class="navbar-item is-hidden-desktop-only" href="https://twitter.com" target="_blank">
+                <span class="icon" style="color: #55acee;">
+                  <i class="fab fa-twitter"></i>
+                </span>
+                <span>Twitter</span>
+              </a>
+               
+              
+            </div><!-- navbar-end -->
+          </div><!-- navbar-menu -->
+        </nav>
+      </section>
+      <!-- End Header -->
+      <!-- Begin Main Content -->
+      <div class="main-content">
+        <div class="section-light skills comments">
+          <div class="container">
+            <div>
+              <!-- Doctor section -->
+              <div v-if="doctor == '' ">
+                <h1>Esta especialidad no cuenta con un médico</h1>
+              </div>
+              <div  class="columns is-multiline" v-for="doc in doctor">
+                <div class="column is-4 has-background-white-ter">
+                  <div class="card column is-12">
+                    <div class="card-image">
+                      <figure class="image is-2by1">
+                        <img :src=`${doc.fotoe}` :alt="doc.nombre_especialidad">
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                      <div class="media">
+                        <div class="media-left">
+                          <figure class="image is-70x70">
+                            <img class="is-rounded" :src=`${doc.foto}` :alt="doc.nombres">
+                          </figure>
+                          <p class="title is-5"><i class="fas fa-user-md"></i> {{ ' ' + doc.nombres + ' ' + doc.apellidos}}</p>
+                          <p class="subtitle is-6">{{ doc.nombre_especialidad }}</p>
+                        </div>
+                      </div>
+                      <p class="has-text-justified" style="margin-top: 5px"> <i class="fas fa-first-aid"></i>  {{ ' ' +doc.descripcion_perfil}} </p>
+                      <p class="has-text-justified" style="margin-top: 15px"> <i class="fas fa-briefcase-medical"></i>  {{ doc.descripcion }}</p>
+                      <p style="margin-top: 5px"> <i class="fas fa-envelope"></i>  {{ ' ' + doc.email}} </p>
+                      <p style="margin-top: 5px"> <i class="fas fa-phone-alt"></i>  {{ ' ' + doc.telefono}} </p>
+                      <p style="margin-top: 5px"> <i class="fas fa-mobile-alt"></i>  {{ ' ' + doc.celular}} </p>
+                      <button class="button is-text is-fullwidth  is-medium" @click="galeria(doc.id_especialidad)">Ver galería</button>
+                    </div><!-- card-content -->
+                    <footer class="card-footer">
+                      <p class="card-footer-item" v-if="doc.facebook != null " ><a class='fab  fa-facebook' :href=`${doc.facebook}` ></a></p>
+                      <p class="card-footer-item" v-if="doc.twitter != null "><a class='fab  fa-twitter' :href=`${doc.twitter}`></a></p>
+                      <p class="card-footer-item" v-if="doc.instagram != null "><a class='fab  fa-instagram' :href=`${doc.instagram}`></a></p>
+                      <p class="card-footer-item" v-if="doc.linkedin != null "><a class='fab  fa-linkedin' :href=`${doc.linkedin}` ></a></p>
+                    </footer>
+                
+                    <div class="modal" id="modalEsp">
+                      <div class="modal-background"></div>
+                      <div class="modal-card">
+                        <header class="modal-card-head">
+                          <p class="modal-card-title">Galería </p>
+                          <button class="delete" aria-label="close" @click="cerrar()"></button>
+                        </header>
+                        <section class="modal-card-body columns is-multiline">                          
+                          <div v-if="publicaciones == '' ">
+                            <h1>Esta especialidad aun no cuenta con publicaciones</h1>
+                          </div>
+                          
+                            <div class="column is-6" v-for="publicacion in publicaciones">
+                              <div class="columns is-multiline">
+                                <div class="column is-6">
+                                  <img :src=`${publicacion.media}` :alt="publicacion.nombre_publicacion">
+                                </div>
+                                <div class="column is-6">
+                                  <h1 class="is-title"><strong>{{publicacion.nombre_publicacion}}</strong></h1>
+                                  <div class="modal-descripcion has-text-justified">
+                                    <p>{{publicacion.descripcion}}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                        </section>
+                      </div><!-- modal-card -->
+                    </div> <!-- modal-->
+                  </div><!-- column -->
+                </div> <!-- column is 4 -->
+              
+                <!-- Comment section -->
+                <div class="column is-8 has-background-white-bis">
+                  <div id="comentario" class="comments">
+                    <div v-if="comments == '' ">
+                      <h1>El médico no cuenta con comentarios</h1>
+                      <h3>Sé el primero en comentar</h3>
+                    </div>
+                   
+                    <?php
+                      if (isset($_SESSION['ClinicaRophe']['estado'])) {
+                    ?>
+                    <!-- show comments -->
+                    <div class="estiloComentarios" style="  overflow: auto; max-height: 500px;">
+                      <?php
+                        }else{
+                      ?>
+                      <div class="estiloComentarios" style="  overflow: auto; max-height: 680px;">
+                        <?php 
+                          } 
+                        ?>
+                        <div v-for="(comment, index) in comments">
+                          <!-- comments style -->
+                          <div  v-if="comment.id_comentario_padre == null">
+                            <div class='comment-temp column is-12'>
+                              <div class='photo'>
+                                <figure v-bind:style="{'background-color': comment.color}"><input type="text" :value="comment.Suscriptor" class="nombre_suscriptor_iniciales" hidden><p class="iniciales_suscriptor"></p></figure>
+                              </div>
+                              <div class='two'>
+                                <h5><b>{{ comment.Suscriptor + ' ' }}</b><span v-if="comment.id_suscriptor > 1000000"><i class="fas fa-check-circle"></i></span> el  {{ comment.fecha_publicacion }}</h5>
+                                <p>{{ comment.Coment }}</p>
+                        <?php if (isset($_SESSION['ClinicaRophe']['estado'])) { ?><button class='click2' @click="reply(index, comment.id)">Responder</button> <?php } ?>
+                              </div>
+                            </div><!-- commentt-temp -->
+                      
+                            <!-- form reply comments -->
+                            <div class="column send is-12" v-if="replys && idActualizar == index ">
+                              <div class="photo" style="color: #fff">
+                                <!-- <figure style="background-color: <?php echo $_SESSION['ClinicaRophe']['avatar'] ?>"><p><?php echo $_SESSION['ClinicaRophe']['iniciales'];?></p></figure> -->
+                              </div>
+                              <div id = "comment" class = "two">
+                                <form action="./api/comentario/AddReply" method="POST" enctype="application/json" >
+                                  Responder a <b>{{ comment.Suscriptor }}</b>
+                                  <div class="field"><!-- name -->
+                                    <div class="control has-icons-left has-icons-right">
+                                      <input class="input" type="text"id = "comentaReply" name="comentarioReply">
+                                      <span class="icon is-small is-left">
+                                        <i class="fas fa-comment"></i>
+                                      </span>
+                                    </div>
+                                  </div><!-- field name -->
+                                  <!-- usuario -->
+                                  <input type = "text" placeholder = "Add a public comment..." class="tex" id = "usuarioReply" name="usuarioReply" value="<?php echo $_SESSION['ClinicaRophe']['id_suscriptor']; ?>" hidden>
+                                  <!-- medico -->
+                                  <input type = "text" placeholder = "Add a public comment..." class="tex" id = "personaReply" name="personaReply"  :value="doc.id_medico" hidden>
+                                  <!-- padre -->
+                                  <input type = "text" placeholder = "Add a public comment..." class="tex" id = "comentario_padreReply" name="comentario_padreReply" :value="comment.id_comentario" hidden>
+                                  
+                                  <input type="submit" id = "can2" class = "click2" value="Responder">
+                                  <button type="button" id = "can" class = "click dis" @click="replys = false">Cancelar</button>
+                                </form>
+                              </div><!-- id comment -->
+                            </div><!-- column send -->
+                          </div><!-- v-if -->
+                          <!-- replys style -->
+                          <div class='comment-temp-reply column is-12' v-else>
+                            <div class='photo'>
+                              <figure v-bind:style="{'background-color': comment.color}"><input type="text" :value="comment.Suscriptor" class="nombre_suscriptor_iniciales" hidden><p class="iniciales_suscriptor"></p></figure>
+                            </div>
+                            <div class='two'>
+                            <h5><b>{{ comment.Suscriptor + ' ' }}</b><span v-if="comment.id_suscriptor > 1000000"><i class="fas fa-check-circle"></i></span> el  {{ comment.fecha_publicacion }}</h5>
+                              <p>{{ comment.Coment }}</p>
+                            </div>
+                          </div><!-- comment-temp-reply -->
+                        </div><!-- v-for comments -->
+                      </div><!-- v-for comments -->
+                    </div><!-- estilo comentarios -->
+                  </div><!-- id comentario -->
+                </div><!-- column is8 -->
+              </div><!-- columns -->
+            </div>
+          </div><!-- container -->
+        </div><!-- section-light -->
+      </div><!-- main -->
+    </div><!-- id especialidades -->
+    <!-- End Main Content -->
+    <!-- Begin Footer -->
+    <footer class="footer is-hidden-mobile">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="columns is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="footer is-hidden-desktop">
+      <div class="container">
+        <div class="content has-text-centered">
+          <div class="is-multiline">
+            <div class="column is-4">
+              <b>Horarios:</b>
+              <p>Lunes a viernes <br> 08:00 am - 05:00 pm</p>
+            </div>
+            <div class="column is-4">
+              <b>Dirección:</b><p> 9a calle poniente entre 6a y 8a avenida norte #19, Santa Ana, Santa Ana</p>
+              <br>
+            </div>
+            <div class="column is-4">
+              <b>Teléfono:</b><p>(+503) 2468-0316</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer -->
+    <div class="regresar" style="position: fixed;z-index: 1000000;bottom: 0;background-color: #fffa;left: 0;">
+			<a href="../index.html">regresar</a>
+		</div>
+    <!-- Scripts -->
+    <script src="http://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/mainFront.js"></script>
+    <script src="js/scriptsFront.js"></script>
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        easing: "ease-out",
+        duration: 800,
+      });
+      //Obtener iniciales del nombre de suscriptor para su imagen
+function getInitName(name) {
+    let separador = null;
+    name = name.split("");
+    for (i = 0; i < name.length; i++) {
+        if (name[i] == " ") {
+            separador = i;
+        }
+    }
+    if (separador != "") {
+        name = name[0] + name[separador + 1];
+        return name.toUpperCase();
+      // console.log(name.toUpperCase());
+    } else {
+        name = name[0] + name[1];
+        return name.toUpperCase();
+      // console.log(name.toUpperCase());
+    }
+}
+
+$(document).ready(function(){
+  var nombres = document.querySelectorAll(".nombre_suscriptor_iniciales");
+  var iniciales = document.querySelectorAll(".iniciales_suscriptor");
+  for (let i = 0; i < nombres.length; i++) {
+    // const element = array[i];
+    // console.log(nombres[i].value);
+    var names = nombres[i].value;
+    var ini = getInitName(names);
+    // console.log(ini);
+    
+    iniciales[i].innerHTML = ini;
+    
+    
+  }
+})
+    </script>
+  </body>
+</html>

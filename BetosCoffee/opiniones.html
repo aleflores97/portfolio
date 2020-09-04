@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" href="imagenes/logo.png">
+		<title>Beto's Coffee</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Finger+Paint" rel="stylesheet">
+		<!----------------------------------- Animate.css ----------------------------------->
+		<link rel="stylesheet" href="css/animate.css">
+		<!----------------------------------- Icomoon Icon Fonts----------------------------------->
+		<link rel="stylesheet" href="css/icomoon.css">
+		<!----------------------------------- Bootstrap  ----------------------------------->
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<!----------------------------------- Flexslider  ----------------------------------->
+		<link rel="stylesheet" href="css/flexslider.css">
+		<!----------------------------------- Theme style  ----------------------------------->
+		<link rel="stylesheet" href="css/style.css">
+		<!----------------------------------- Mi Estilo ----------------------------------->
+		<link rel="stylesheet" href="css/estilo.css">
+		<link rel="stylesheet" href="css/card.css">
+		<!-- <link rel="stylesheet" href="css/comentarios.css"> -->
+		<!-- <link rel="stylesheet" href="css/sweet-alert.css"/> -->
+		<script src='https://cdn.jsdelivr.net/npm/sweetalert2@8'></script>
+
+		<!----------------------------------- jquery ----------------------------------->
+		<script src="jquery/jquery-3.3.1.js"></script>
+		<script src="jquery/jquery-3.3.1.min.js"></script>
+		<script src="js/jquery.flexslider.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<link rel="stylesheet" href="css/flexslider.css" type="text/css">
+		<!----------------------------------- Font Awesome ----------------------------------->
+		<script src="https://kit.fontawesome.com/7eaf41582e.js"></script>
+		<style>
+			#wh-widget-send-button{
+				display: none;
+				bottom: 15% !important;
+			}
+		</style>
+  </head>
+
+<body>
+  <div id="page">
+	<!----------------------------- NAVEGACIÓN --------------------------------->
+	<nav class="nav" role="navigation">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 text-center logo-wrap">
+							<div id="logo"><a href="index.html">Beto's Coffee</a></div>
+						</div>
+						<div class="col-xs-12 text-center menu-1 menu-wrap">
+							<ul>
+								<li><a href="index.html">Inicio</a></li>
+								<li><a href="productos/">Menú</a></li>
+								<li><a href="imagenes.html">Imágenes</a></li>
+								<li><a href="nosotros.html">Sobre Nosotros</a></li>
+								<li class="active"><a href="opiniones.php">Opiniones</a></li>
+								<li class="has-dropdown">
+									<a href="#">Publicaciones</a>
+									<ul class="dropdown">
+										<li><a href="instagram.html">Instagram</a></li>
+										<li><a href="facebook.html">Facebook</a></li>
+									</ul>
+								</li>   
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<!----------------------------- HEADER --------------------------------->
+			<header id="header" class="cover" role="banner" style="background-image: url(imagenes/opiniones.jpg); width:100%;" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<div class="display-t js-fullheight">
+								<div class="display-tc js-fullheight animate-box" data-animate-effect="fadeIn">
+									<h1>Déjanos <em>tu</em> Opinión</h1>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
+	 <!-- MENU SECTION END-->
+
+		<!-- <div class="col-12 text-center">
+					<div class="no-floating">
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i id="icono" class="fa fa-plus"></i></button>
+						<a href="logout.php"><button type="button"class="btn btn-danger"><i id="icono1" class="fa fa-power-off"></i></button></a>
+					</div>
+					
+					<div class="floating">
+						<button type="button" id="plus" class="btn btn-danger" onclick="student.loadToComment()"><i id="icono" class="fa fa-plus"></i></button>
+						<a href="logout.php"><button type="button" id="minus" class="btn btn-danger"><i id="icono1" class="fa fa-power-off"></i></button></a>
+					</div>
+
+		</div> -->
+	 
+	 	<div id="fb-root"></div>
+		<script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2&appId=369700810489095&autoLogAppEvents=1"></script>
+		<!----------------------------- SOCIAL BAR --------------------------------->
+		<div class="social-bar">
+			<a href="https://www.facebook.com/Betos-Coffee-1917917678248720" target="_blank">
+			<div class="btn-social">
+					<p>Da un like <i class="fab fa-facebook-f"></i></p>
+				</div>
+			</a>
+			<a href="https://www.instagram.com/betoscoffee/" target="_blank">
+				<div class="btn-social social-bar-insta">
+					<p>Síguenos <i class="fab fa-instagram"></i></p>
+				</div>
+			</a>
+		</div>
+<!--------------------------------------------------- Modall Nuevo Comentarios ------------------------------------------------------->
+	
+		<div class="container-fluid text">
+			<div class="modal fade" id="exampleModalComentar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						Agregar Comentario
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form role="form" class="center">
+								<fieldset>
+									<div class="form-group">
+										<label for="InputUsuario">
+											Usuario
+										</label>
+										<input type="text" class="form-control text" id="InputUsuario" readonly="true" disabled="true">
+									</div>
+									<div class="form-group">
+										<label for="Inputcomentario">
+											Comentario
+										</label>
+										<input type="text" class="form-control text" id="InputComentario">
+									</div>									
+									<div class="form-group button-group pull-right">  
+										<button type="button" onclick="student.addComment();" class="btn btn-success">
+											Agregar
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button id="btncerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+<!--------------------------------------------------- Modall Respuesta Comentarios ------------------------------------------------------->
+<div class="modal fade text" id="exampleModalResponder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						Responer Comentario
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form role="form" class="center">
+								<fieldset>
+									<div class="form-group">
+										<label for="InputUsuario">
+											Usuario
+										</label>
+										<input type="text" class="form-control text" id="InputUsuarioReply" readonly="true" disabled="true">
+									</div>
+									<div class="form-group">
+										<label for="Inputcomentario">
+											Comentario
+										</label>
+										<input type="text" class="form-control text" id="InputComentarioReply">
+										<input type="hidden" class="form-control text" id="InputIdUsuarioReply">
+									</div>									
+									<div class="form-group button-group pull-right">  
+										<button type="button" onclick="student.addReply();" class="btn btn-success">
+											Responder
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button id="btncerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
+			</div>			
+<!--------------------------------------------------- Modall Inicio Sesion ------------------------------------------------------->
+	
+<div class="container-fluid text">
+			<div class="modal fade" id="exampleModalLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+						Iniciar Sesión
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<form role="form" class="center">
+								<fieldset>
+									<div class="form-group">
+										<label for="InputUsuarioLogin">
+											Usuario
+										</label>
+										<input type="text" class="form-control text" id="InputUsuarioLogin">
+									</div>
+									<div class="form-group">
+										<label for="InputContrasena">
+											Contraseña
+										</label>
+										<input type="password" class="form-control text" id="InputContrasenaLogin">
+									</div>									
+									<div class="form-group button-group pull-right">  
+										<button type="button" onclick="student.login();" class="btn btn-success">
+											Agregar
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button id="btncerrar" type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+
+		
+
+	<!-- </div> -->
+<!-- </div> -->
+	<!--------------------------------------------------     --------------------------------------------------------- -->
+	<div class="container">
+		<div id="content">
+			<ul id="tabs" data-tabs="tabs">
+				<li class="active"><a href="#comment" data-toogle="tab" id="mostrarComentarios">Comentar</a> </li>
+				<li><a href="#fbComment" data-toogle="tab" id="ocultarComentarios">Comentar con Facebook</a> </li>
+			</ul>
+			<div id="my-tab-content" class="tab-content">
+				<div class="tab-pane active comentario1" id="comment">	
+												
+					<div class="col-md-12 col-xs-12">		
+					<div class="container">
+								<a href="login.php"><button class="btn">Iniciar sesión</button></a>
+							</div><br><br>
+								<input type="hidden" id="sesion" value="false">
+								<!-- <div class="floating"> -->
+									<!-- <button type="button"  class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"><i id="icono" class="fa fa-plus"></i></button> -->
+									<!-- <button type="button" id="minus" class="btn btn-danger" onclick="student.abrirLogin()"><i id="icono1" class="fa fa-user"></i></button> -->
+								<!-- </div>							 -->
+							
+							<!-- cargar los comentarios -->
+							<div class="comentarios">		
+								<div class="table container"  id="tblStudent">
+									<div class='card horizontal'>
+										<div class='card-image'>
+													<img src='imagenes/logo.png' alt='imagen' class='img-circle' width='100px'>
+												</div>
+										
+										<div class='card-stacked'>
+											<div class='card-header'>
+											<span>Alejandra</span>
+											<span> on </span>
+											<span>2019/11/20</span> <span class="badge badge-pill badge-success"> Administrador</span>
+											</div>
+											<div class='card-content text'>Comentario</div>
+											<div class='card-action text'>
+												<button id='editar' type='button'class='btn btn-warning' >Responder</button>      
+											</div>
+													</div>
+													</div>
+
+													<div class='col s12 m7 reply'>
+														<div class='card horizontal'>
+															<div class='card-image'>
+																		<img src='imagenes/logo.png' alt='imagen' class='img-circle' width='100px'>
+																	</div>
+															
+															<div class='card-stacked'>
+																<div class='card-header'>
+																<span>Alejandra</span>
+																<span> on </span>
+																<span>2019/11/20</span> <span class="badge badge-pill badge-success"> Administrador</span>
+																</div>
+																<div class='card-content text'>Comentario</div>
+																<div class='card-action text'>
+																	<button id='editar' type='button'class='btn btn-warning' >Responder</button>      
+																</div>
+																		</div>
+																		</div>
+													</div>
+											
+								</div>
+							</div>
+					</div>
+				</div>
+				<!-------------------------------------------------------- facebook ------------------------------------------->
+				<!-- <div id="messenger">
+				<script type="text/javascript">
+								(function () {
+									var options = {
+										facebook: "1917917678248720", // Facebook page ID
+										call_to_action: "Escríbenos! ", // Call to action
+										position: "right", // Position may be 'right' or 'left'
+									};
+									var proto = document.location.protocol, host = "whatshelp.io", url = proto + "//static." + host;
+									var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+									s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+									var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+								})();
+						</script>
+				</div> -->
+				<div class="tab-pane" id="fbComment">
+					<div class="container" >
+						<div class="fb-comments" data-href="http://localhost/BetosCoffee/opiniones.php"  data-numposts="10"
+						data-colorscheme="dark" width='100%'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+<!-- </div> -->
+
+<!-- </div> -->
+			<!----------------------------- FOOTER --------------------------------->
+			<footer id="myFooter">
+				<div class="container">
+					<div class="social-networks">
+						<div class="row">
+							<div class="col-md-3 mb">
+								¡Visítanos! <br> Puedes encontrarnos en <br>Restaurante La Antorcha 
+							</div>
+							<div class="col-md-3 mb">
+								Te eperamos <br>
+								De Martes a Viernes <br>De 1:00pm a 6:00pm 
+							</div>
+							<div class="col-md-3 mb social-icons">
+								<p>Síguenos para conocer los días que estaremos en Calle La Morenita</p>
+								<a href="https://www.instagram.com/betoscoffee/" target="_blank" class="twitter"><i class="fab fa-instagram"></i></a>
+								<a href="https://www.facebook.com/Betos-Coffee-1917917678248720" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+							</div>
+							<div class="col-md-3 mb">
+								<p>También puedes dejarnos tu opinión</p>
+								<a href="opiniones.php" class="btn">Comentar</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright">
+					<p>© 2019 Beto's Coffee</p>
+				</div>
+			</footer>
+		</div>
+		<div class="gototop js-top">
+			<a href="#" class="js-gotop"><i class="icon-arrow-up22"></i></a>
+		</div>
+		<div class="regresar" style="position: fixed;z-index: 1000000;top: 0;float: right;background-color: #fffa;right: 0;">
+			<a href="../index.html">regresar</a>
+		</div>
+	<!----------------------------------- jQuery ----------------------------------->
+	<script src="js/jquery.min.js"></script>
+		<!----------------------------------- Bootstrap ----------------------------------->
+		<script src="js/bootstrap.min.js"></script>
+		<!----------------------------------- Waypoints ---------------------------------->
+		<script src="js/jquery.waypoints.min.js"></script>
+		<!----------------------------------- Waypoints ----------------------------------->
+		<script src="js/jquery.stellar.min.js"></script>
+		<!----------------------------------- Flexslider ----------------------------------->
+		<script src="js/jquery.flexslider-min.js"></script>
+		<!----------------------------------- Main ----------------------------------->
+		<script src="js/main.js"></script>
+		<script src="js/scripts.js"></script>
+		<script src="js/sweet-alert.js"></script>
+
+		<script type="text/javascript">
+    	$(document).ready(function(){
+			student.listStudents();    	
+		});
+		
+		// $(document).ready(function(){
+			$("#ocultarComentarios").click(function(){
+				$(".comentario1").css("display", "none");
+				$("#fbComment").css("display", "block");
+				$(".floating").css("display", "none");
+				$("#wh-widget-send-button").css("display","block");
+				$(".gototop").css("bottom", "15%");			
+			});
+		// });
+
+		// $(document).ready(function(){
+			$("#mostrarComentarios").click(function(){
+				$(".comentario1").css("display", "block");
+				$("#fbComment").css("display", "none");
+				$("#wh-widget-send-button").css("display", "none");
+				$(".gototop").css("bottom", "0");
+				$(".floating").css("display", "block");				
+			});
+		// })
+		</script>
+</div>
+  </body>
+
+</html>

@@ -30,7 +30,7 @@ new Vue({
                 date: 'Nov. 2019 - Oct. 2020',
                 imgs: [
                     {
-                        img: 'img/CoffeeIndex.png'
+                        img: ''
                     }
                 ],
                 url: 'UnPulmónMás'

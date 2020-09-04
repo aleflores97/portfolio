@@ -30,10 +30,10 @@ new Vue({
                 date: 'Nov. 2019 - Oct. 2020',
                 imgs: [
                     {
-                        img: ''
+                        img: '/imgUnPulmonMas.png'
                     }
                 ],
-                url: 'UnPulmónMás'
+                //url: 'UnPulmónMás'
             },
             {
                 id: 2,

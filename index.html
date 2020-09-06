@@ -11,6 +11,8 @@
   <link rel="icon" href="img/logo1.png">
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+
 </head>
 <body>
   <main id="app">
@@ -71,9 +73,9 @@
                 </div> -->
                 <div class="column_wraper ml-5">
                   <h2>{{ idiom.menu2}}</h2>
-                  <p>{{ idiom.about1 }}</p>
-                  <p> {{ idiom.about2 }}</p>
-                  <p>{{ idiom.about3 }}</p>
+                  <p class="slide-up">{{ idiom.about1 }}</p>
+                  <p class="slide-up"> {{ idiom.about2 }}</p>
+                  <p class="slide-up">{{ idiom.about3 }}</p>
                   <p></p>
                 </div>
               </div>
@@ -89,38 +91,32 @@
   </div>
   <!-- / about end / -->
   
-  <!-- <span>Seleccionado: {{ idiomSelected }}</span> -->
   
-  <!-- <div id="skills">
+  <div id="skills">
     <div class="parallax">
     <div class="skills"></div>
-    <div class="container" class="mt-4">
+    <div class="container">
       <h3 class="text-center text-white">{{ idiom.menu3 }}</h3>
-      <div class="row">
+      <div class="row" style="margin-top: 5%;">
 
-          <div class="col-12 col-md-4" v-for="skil in skills">
+          <div class="col-12 col-md-3 col-xs-6" v-for="skil in skills">
             <div class="skill">
-              <p>{{skil.name}}</p>
-              <div class="skill-bar skill1" v-bind:style="{width: skil.value}">
-                  <span class="skill-count">{{skil.value}}</span>
-              </div>
+              <p class="slide-up">{{skil.name}}</p>
             </div>
-          </div>
-
-          
+          </div>        
       
         </div>
       </div>
     </div>
-  </div>-->
+  </div>
 <!-- skills end -->
 
   <div id="services">
-    <div class="container" class="mt-4">
+    <div class="container"  style="margin-top: 5%;">
       <h3 class="text-center">{{ idiom.menu4 }}</h3>
       <div class="row">
-        <div class="ol-12 col-md-4">
-          <div class="box-part text-center">
+        <div class="col-12 col-md-4">
+          <div class="box-part text-center" class="slide-up">
             <i class="fa fa-mobile fa-3x" aria-hidden="true"></i>
             <div class="title mt-2">
               <h4>{{ idiom.service1Name }}</h4>
@@ -129,12 +125,12 @@
               <!-- <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
               </span> -->
             </div>
-            <a href="#">Learn More</a>
+            <!-- <a href="#">Learn More</a> -->
           </div>
         </div>
         
-        <div class="ol-12 col-md-4">
-          <div class="box-part text-center">
+        <div class="col-12 col-md-4">
+          <div class="box-part text-center" class="slide-up">
             <i class="fa fa-laptop fa-3x" aria-hidden="true"></i>
             <div class="title mt-2">
               <h4>{{ idiom.service2Name }}</h4>
@@ -143,21 +139,21 @@
               <!-- <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
               </span> -->
             </div>
-            <a href="#">Learn More</a>
+            <!-- <a href="#">Learn More</a> -->
           </div>
         </div>
         
-        <div class="ol-12 col-md-4">
-          <div class="box-part text-center">
+        <div class="ocl-12 col-md-4">
+          <div class="box-part text-center" class="slide-up">
             <i class="fa fa-code fa-3x" aria-hidden="true"></i>
             <div class="title mt-2">
-              <h4>{{ idiom.service2Name }}</h4>
+              <h4>{{ idiom.service3Name }}</h4>
             </div>
             <div class="text">
               <!-- <span>Lorem ipsum dolor sit amet, id quo eruditi eloquentiam. Assum decore te sed. Elitr scripta ocurreret qui ad.              
               </span> -->
             </div>
-            <a href="#">Learn More</a>
+            <!-- <a href="#">Learn More</a> -->
           </div>
         </div>
 
@@ -171,42 +167,42 @@
     <div class="timeline">
   
     
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience1 }}</h3>
         <p>{{ idiom.dateExperience1 }}</p>
       </div>
   
     
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience2 }}</h3>
         <p>{{ idiom.dateExperience2 }}</p>
       </div>
   
     
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience3 }}</h3>
         <p>{{ idiom.dateExperience3 }}</p>
       </div>
   
     
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience4 }}</h3>
         <p>{{ idiom.dateExperience4 }}</p>
       </div>
   
     
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience5 }}</h3>
         <p>{{ idiom.dateExperience5 }}</p>
       </div>
   
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience6 }}</h3>
         <p>{{ idiom.dateExperience6 }}</p>
       </div>
 
 
-      <div class="timeline__item">
+      <div class="timeline__item" class="slide-up">
         <h3 class="timeline__title">{{ idiom.experience7 }}</h3>
         <p>{{ idiom.dateExperience7 }}</p>
       </div>

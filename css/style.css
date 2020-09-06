@@ -528,15 +528,18 @@
 
 .parallax .skill::before {
   content: "";
-  width: 100%;
-  height: 10px;
+  width: 6ch;
+  height: 5px;
   display: block;
   position: absolute;
-  background-color: #959595;
+  background-color: #a7fa6f;
   bottom: 0;
   border-radius: 10px;
 }
-
+.parallax h3{
+  z-index: 10;
+position: relative;
+}
 .parallax .skill .skill-bar:hover::before {
   height: 100%;
 }

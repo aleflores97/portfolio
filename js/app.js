@@ -5,21 +5,51 @@ new Vue({
             // hombres
             {
                 id: 1,
-                name:"HTML",
-                value:"30%",
-                
+                name:"HTML",                
             },
             {
                 id: 2,
-                name:"CSS",
-                value:"30%",
-                
+                name:"CSS",                
             },
             {
                 id: 3,
-                name:"JavaScript",
-                value:"70%",
-                
+                name:"JavaScript",   
+            },
+            {
+                id: 4,
+                name:"PHP",   
+            },
+            {
+                id: 5,
+                name:"Ajax",   
+            },
+            {
+                id: 6,
+                name:"Bootstrap",   
+            },
+            {
+                id: 7,
+                name:"MySQL",   
+            },
+            {
+                id: 8,
+                name:"Visual Studio Code",   
+            },
+            {
+                id: 9,
+                name:"Photoshop",   
+            },
+            {
+                id: 10,
+                name:"Vuejs",   
+            },
+            {
+                id: 11,
+                name:"Angularjs",   
+            },
+            {
+                id: 12,
+                name:"Reactjs",   
             }
         ],
         projects: [
@@ -30,10 +60,10 @@ new Vue({
                 date: 'Nov. 2019 - Oct. 2020',
                 imgs: [
                     {
-                        img: '/imgUnPulmonMas.png'
+                        img: ''
                     }
                 ],
-                //url: 'UnPulmónMás'
+                url: 'UnPulmónMás'
             },
             {
                 id: 2,

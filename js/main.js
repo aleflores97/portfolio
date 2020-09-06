@@ -30,3 +30,10 @@ $(".toggle").on("click", function() {
            }
         });
     });
+
+
+    ScrollReveal().reveal('.slide-up', {
+        delay: 375,
+        duration: 500,
+        reset: true
+    });

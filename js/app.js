@@ -2,7 +2,6 @@ new Vue({
     el: '#app',
     data: {
         skills: [
-            // hombres
             {
                 id: 1,
                 name:"HTML",                
@@ -63,7 +62,8 @@ new Vue({
                         img: ''
                     }
                 ],
-                url: 'UnPulmónMás'
+                url: 'UnPulmónMás',
+                tecnologies: 'HTML, CSS, JAVASCRIPT, AJAX, PHP MVC, BOOTSTRAP, MYSQL'
             },
             {
                 id: 2,
@@ -75,7 +75,8 @@ new Vue({
                         img: 'img/ClinicaIndex.png',
                     }
                 ],
-                url: 'ClinicaRophe/index.html'
+                url: 'ClinicaRophe/index.html',
+                tecnologies: 'HTML, CSS, BULMA, VUEJS, JAVASCRIPT'
             },
             {
                 id: 3,
@@ -87,7 +88,8 @@ new Vue({
                         img: 'img/CoffeeIndex.png'
                     }
                 ],
-                url: 'BetosCoffee/index.html'
+                url: 'BetosCoffee/index.html',
+                tecnologies: 'HTML, CSS, JAVASCRIPT, PHP, MYSQL'
             }
         ],
         images: [

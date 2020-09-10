@@ -19,7 +19,7 @@
   
   <nav>
     <ul class="menu" v-for="idiom in idiomSelected">
-        <!-- <li class="logo"><a href="#home"><img src="img/logo1.png" alt="Ale Flores" style="width: 150px;"></a></li> -->
+        <!-- <li class="logo"><a href="#home"><img src="img/logo.png" alt="Ale Flores" style="width: 150px;"></a></li> -->
         <li class="logo"><a href="#home">Ale</a></li>
         <li class="item"><a href="#home">{{ idiom.menu1 }}</a></li>
         <li class="item"><a href="#about">{{ idiom.menu2 }}</a></li>
@@ -226,6 +226,7 @@
                 <div class="col-sm-9">
                   <h2 class="w-title">{{project.name}}</h2>
                   <div class="w-more">
+                    <span class="w-date">{{project.tecnologies}}</span><br>
                     <span class="w-ctegory">{{project.position}}</span> / <span class="w-date">{{project.date}}</span>
                   </div>
                 </div>

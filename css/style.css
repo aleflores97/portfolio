@@ -100,6 +100,18 @@
   .fa-instagram:hover{
     color: #d85538;
   }
+  .fa-skype{
+    color: #0078d7;
+  }
+  .fa-skype:hover{
+    color: #00aff0;
+  }
+  .fa-envelope{
+    color: #b23121;
+  }
+  .fa-envelope:hover{
+    color: #d44638;
+  }
   /* Navbar Toggle */
   .toggle {
     cursor:pointer;

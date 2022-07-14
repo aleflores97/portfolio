@@ -59,10 +59,10 @@ new Vue({
                 date: 'Nov. 2019 - Oct. 2020',
                 imgs: [
                     {
-                        img: ''
+                        img: 'img/unpulmonmas.png'
                     }
                 ],
-                url: 'UnPulmónMás',
+                url: 'https://unpulmonmas.org/',
                 tecnologies: 'HTML, CSS, JAVASCRIPT, AJAX, PHP MVC, BOOTSTRAP, MYSQL'
             },
             {
@@ -90,6 +90,19 @@ new Vue({
                 ],
                 url: 'BetosCoffee/index.html',
                 tecnologies: 'HTML, CSS, JAVASCRIPT, PHP, MYSQL'
+            },
+            {
+                id: 4,
+                name: "2ITJobs",
+                position: 'Web Developer',
+                date: 'Dec. 2020 - Now',
+                imgs: [
+                    {
+                        img: 'img/2itjobs.png'
+                    }
+                ],
+                url: 'https://2itjobs.com/',
+                tecnologies: 'HTML, CSS, JAVASCRIPT, PHP, MYSQL'
             }
         ],
         images: [
@@ -102,6 +115,11 @@ new Vue({
                 id: 2,
                 projectId: 1,
                 src: 'img/ClinicaProduct.png'
+            },
+            {
+                id: 3,
+                projectId: 1,
+                src: 'img/CoffeeIndex.png'
             },
         ],
         singleProject: '',
@@ -138,8 +156,10 @@ new Vue({
                 dateExperience5: "Julio 2019",
                 experience6: "Desarrollo de sitio Web para Un Pulmon Mas",
                 dateExperience6: "Noviembre 2019 - Julio 2020",
-                experience7: "Curso de Inglés",
-                dateExperience7: "Marzo 2020 - Octubre 2020"
+                experience7: "Content Managet",
+                dateExperience7: "Diciembre 2020 - Actualidad",
+                experience8: "Desarrollador Web",
+                dateExperience8: "Marzo 2021 - Actualidad"
             }
         ],
         english: [
@@ -173,8 +193,10 @@ new Vue({
                 dateExperience5: "July 2019",
                 experience6: "Website development for Un Pulmón Más",
                 dateExperience6: "November 2019 - Jul 2020",
-                experience7: "English Training",
-                dateExperience7: "March 2020 -  September 2020"
+                experience7: "Content Managet",
+                dateExperience7: "December 2020 - Present",
+                experience8: "Web Developer",
+                dateExperience8: "March 2021 - Present"
             }
         ],
 

@@ -67,36 +67,7 @@
   </div>
   <!--/ Intro Skew End /-->
 <div v-for="idiom in idiomSelected">
-  <div id="about">
-    <div class='page-wrapper'>
-      <div class='row_wrapper'>
-        <div class='column_wrapper'>
-            <!-- <div class="card"> -->
-              <div class="row_wrapper padding_profile">
-                <!-- <div class="column_wraper">
-                  <img src="img/img1.jpg" class="img_about_profile" alt="">
-                </div> -->
-                <div class="column_wraper ml-5">
-                  <h2>{{ idiom.menu2}}</h2>
-                  <p class="slide-up">{{ idiom.about1 }}</p>
-                  <p class="slide-up"> {{ idiom.about2 }}</p>
-                  <p class="slide-up">{{ idiom.about3 }}</p>
-                  <p></p>
-                </div>
-              </div>
-            <!-- </div> -->
-        </div>
-        <div class='column_wrapper image_about'>
-        </div>
-      </div>
-
-     
-    </div>
-    
-  </div>
   <!-- / about end / -->
-  
-  
   <div id="skills">
     <div class="parallax">
     <div class="skills"></div>
@@ -162,6 +133,13 @@
         <h3 class="timeline__title">{{ idiom.experience7 }}</h3>
         <p>{{ idiom.dateExperience7 }}</p>
       </div>
+
+      
+
+      <div class="timeline__item" class="slide-up">
+        <h3 class="timeline__title">{{ idiom.experience8 }}</h3>
+        <p>{{ idiom.dateExperience8 }}</p>
+      </div>
   
     </div>
   </div>
@@ -169,6 +147,8 @@
   
   
   <div id="services">
+    
+    <div class="skills"></div>
     <div class="container" style="top: 10%; position: relative;" >
       <h3 class="text-center text-white">{{ idiom.menu4 }}</h3>
       <div class="row" style="top: 10%; position: relative;">
@@ -225,7 +205,7 @@
                   </div>
                 </div>
                 <div class="col-sm-3">
-                  <a class="w-like" v-bind:href="project.url">
+                  <a class="w-like" target="_blank" v-bind:href="project.url">
                     <span class="fa fa-plus"></span>
                   </a>
                 </div>
